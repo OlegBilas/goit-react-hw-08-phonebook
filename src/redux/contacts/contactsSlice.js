@@ -1,5 +1,9 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { addContact, deleteContact, fetchContacts } from 'redux/operations';
+import {
+  addContact,
+  deleteContact,
+  fetchContacts,
+} from 'redux/contacts/operations';
 
 // const initialItems = [
 //   { id: 'id-4', name: 'Annie Copeland', phone: '227-91-26' },
