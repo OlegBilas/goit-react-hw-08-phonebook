@@ -23,16 +23,6 @@ export default function LogInForm() {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
-
-    //Перевірка на коректність даних форми
-    for (const el of form.elements) {
-      const reg = new RegExp(el.pattern);
-      if (!reg.test(el.value)) {
-        return toast.error(el.title);
-      }
-    }
-
-    // const userData = { name: user.email, number: user.password };
     const formData = new FormData(form);
     const userData = Object.fromEntries(formData.entries());
     dispatch(logIn(userData));
@@ -57,14 +47,14 @@ export default function LogInForm() {
         onChange={handleChange}
       />
 
-      <Label htmlFor={idPassword}>Phone</Label>
+      <Label htmlFor={idPassword}>Password</Label>
       <Input
         id={idPassword}
         type="password"
         name="password"
         value={user.password}
-        pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/"
-        title="Password has to be from 6 to 20 characters, which contain at least one numeric digit, one uppercase and one lowercase letter"
+        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$"
+        title="Password has to be from 6 to 20 characters, which contain at least one numeric digit, one uppercase and one lowercase letter (latin symbols)"
         required
         onChange={handleChange}
       />
