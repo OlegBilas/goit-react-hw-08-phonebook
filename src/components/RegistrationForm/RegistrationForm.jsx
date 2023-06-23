@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Form, Label, Input } from './RegistrationForm.styled';
@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 
 export default function RegistrationForm() {
-  const initialState = { name: null, email: null, password: null };
+  const initialState = { name: '', email: '', password: '' };
   const [user, setUser] = useState(initialState);
 
   const dispatch = useDispatch();
