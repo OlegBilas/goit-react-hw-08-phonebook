@@ -27,6 +27,13 @@ export default function ContactForm() {
     if (contacts.find(({ name }) => name === contact.name)) {
       return toast.error(`${contact.name} is already in contacts`);
     }
+
+    for (const el of e.target.elements) {
+      const reg = new RegExp(el.pattern);
+      if (!reg.test(el.value)) {
+        return toast.error(el.title);
+      }
+    }
     dispatch(addContact({ name: contact.name, number: contact.number }));
     setContact(initialState);
   };
@@ -59,7 +66,7 @@ export default function ContactForm() {
         onChange={handleChange}
       />
 
-      <button type="submit" disabled={!contact.name || !contact.phone}>
+      <button type="submit" disabled={!contact.name || !contact.number}>
         Add contact
       </button>
     </Form>
