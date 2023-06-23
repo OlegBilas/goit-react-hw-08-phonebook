@@ -1,4 +1,4 @@
-import ContactList from 'components/ContactList/ContactList';
+import { Contacts } from 'components/Contacts/Contacts';
 import { Helmet } from 'react-helmet';
 
 export default function ContactsPage() {

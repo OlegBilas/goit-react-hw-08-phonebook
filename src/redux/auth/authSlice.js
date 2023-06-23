@@ -23,10 +23,10 @@ const authSlice = createSlice({
 
   extraReducers: builder => {
     builder
-      // .addCase(logOut.fulfilled, handleLogOut)
       .addCase(refreshUser.pending, handleRefreshUserPending)
       .addCase(refreshUser.fulfilled, handleRefreshUserFulfilled)
       .addCase(refreshUser.rejected, handleRefreshUserRejected)
+      .addCase(logOut.fulfilled, handleLogOut)
       .addMatcher(
         isAnyOf(...getActionGeneratorsWithType(STATUS.FULFILLED)),
         handleUserLoggingFulfilled
