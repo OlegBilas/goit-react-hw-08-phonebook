@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
 export const List = styled.ul`
-  max-width: calc(100% - 40px);
+  max-width: calc(100% - 20px);
   padding: 0;
+  @media screen and (min-width: var(--desktop)) {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
 `;
 
 export const Item = styled.li`

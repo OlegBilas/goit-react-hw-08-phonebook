@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import img from '../../images/book.png';
 
 export const Section = styled.section`
-  width: 100vw;
   height: 100vh;
   padding: 20px;
   background-repeat: no-repeat;
@@ -14,4 +13,12 @@ export const Section = styled.section`
       rgba(47, 48, 58, 0.5)
     ),
     url(${img});
+`;
+
+export const Header = styled.header`
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
