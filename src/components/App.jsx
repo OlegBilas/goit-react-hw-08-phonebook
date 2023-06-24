@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from './Loader/Loader';
 import { selectIsRefreshing } from 'redux/auth/selectors';
@@ -7,10 +7,15 @@ import { Route, Routes } from 'react-router-dom';
 import { PrivateRoute } from '../PrivateRoute';
 import { RestrictedRoute } from '../RestrictedRoute';
 import Layout from './Layout/Layout';
-import HomePage from 'pages/HomePage';
-import RegistrationPage from 'pages/RegistrationPage';
-import LoginPage from 'pages/LoginPage';
-import ContactsPage from 'pages/ContactsPage';
+// import HomePage from 'pages/HomePage';
+// import RegistrationPage from 'pages/RegistrationPage';
+// import LoginPage from 'pages/LoginPage';
+// import ContactsPage from 'pages/ContactsPage';
+
+const HomePage = lazy(() => import('pages/HomePage'));
+const RegistrationPage = lazy(() => import('pages/RegistrationPage'));
+const LoginPage = lazy(() => import('pages/LoginPage'));
+const ContactsPage = lazy(() => import('pages/ContactsPage'));
 
 export function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
