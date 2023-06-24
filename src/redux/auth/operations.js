@@ -48,7 +48,9 @@ export const logOut = createAsyncThunk(
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
-    const persistedToken = thunkAPI.getState.auth.token;
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('You are not logged in');
     }
