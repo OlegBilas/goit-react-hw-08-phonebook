@@ -4,7 +4,7 @@ import { logOut } from 'redux/auth/operations';
 import { selectUser } from 'redux/auth/selectors';
 import { Username, Wrapper } from './UserMenu.styled';
 
-function UserMenu({ email }) {
+function UserMenu() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
