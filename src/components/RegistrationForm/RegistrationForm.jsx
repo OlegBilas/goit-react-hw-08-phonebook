@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
-// import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Form, Label, Input } from './RegistrationForm.styled';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
+import { toast } from 'react-toastify';
 
 export default function RegistrationForm() {
   const initialState = { name: '', email: '', password: '' };
@@ -25,7 +25,13 @@ export default function RegistrationForm() {
     const form = e.target;
     const formData = new FormData(form);
     const userData = Object.fromEntries(formData.entries());
-    dispatch(register(userData));
+    dispatch(register(userData)).then(res => {
+      if (res?.error) {
+        toast.error(
+          'Probably, you are registered with your login/password already. Or your email is wrong'
+        );
+      }
+    });
 
     setUser(initialState);
     form.reset();

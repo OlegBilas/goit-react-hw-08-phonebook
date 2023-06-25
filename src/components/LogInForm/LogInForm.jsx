@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
-// import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Form, Label, Input } from './LogInForm.styled';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
+import { toast } from 'react-toastify';
 
 export default function LogInForm() {
   const initialState = { email: '', password: '' };
@@ -25,7 +25,13 @@ export default function LogInForm() {
     const form = e.target;
     const formData = new FormData(form);
     const userData = Object.fromEntries(formData.entries());
-    dispatch(logIn(userData));
+    dispatch(logIn(userData)).then(res => {
+      if (res?.error) {
+        toast.error(
+          'Something went wrong. Probably, you are not registered or your email/password have had mistakes'
+        );
+      }
+    });
 
     setUser(initialState);
     form.reset();
